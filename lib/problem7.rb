@@ -1,13 +1,15 @@
 require 'prime'
 
 def find_prime(number)
-  n = 0
-  m = 1
+  count = 0
+  integer = 0
+
   while true
-    if Prime.prime?(m)
-      n += 1
-      return m if n == number
+    integer += 1
+
+    if Prime.prime?(integer)
+      count += 1
+      return integer if count == number
     end
-    m += 1
   end
 end
