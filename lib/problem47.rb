@@ -1,26 +1,53 @@
 require 'prime'
 
 def distinct_primes_factors(number)
-  consecutive_number = 2
+  prime_array = [2,3,5]
+  first_of_consecutive_number = 6
 
   while true
-    for i in consecutive_number...(consecutive_number+number)
-      break if prime_factors(i, number).count != number
-      return consecutive_number if i == (consecutive_number+number-1)
+    if Prime.prime?(first_of_consecutive_number)
+      prime_array << first_of_consecutive_number
+      first_of_consecutive_number += 1
+      next
     end
 
-    consecutive_number += 1
-  end
-end
+    bool = false
 
-def prime_factors(value, number)
-  array = []
-
-  for i in 2..(value/2)
-    if Prime.prime?(i)
-      array << i if (value % i).zero?
+    ((first_of_consecutive_number+1)...(first_of_consecutive_number+number)).to_a.each do |x|
+      if Prime.prime?(x)
+        prime_array << x
+        first_of_consecutive_number = x+1
+        bool = true
+        break
+      end
     end
-  end
 
-  array
+    next if bool
+
+    break_loop = false
+
+    for i in first_of_consecutive_number...(first_of_consecutive_number+number)
+      count = 0
+
+      prime_array.each do |x|
+        if (i % x).zero?
+          count += 1
+
+          if count > number
+            break_loop = true
+            break
+          end
+        end
+      end
+
+      if count == number
+        next
+      else
+        break_loop = true
+        break
+      end
+    end
+
+    break_loop ? first_of_consecutive_number += 1 : (return first_of_consecutive_number)
+  end
 end
