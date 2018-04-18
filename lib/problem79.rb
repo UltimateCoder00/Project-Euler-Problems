@@ -16,7 +16,7 @@ def passcode_derivation
     unique_elements.delete(passcode[-1])
   end
 
-  passcode.to_i
+  passcode.to_
 end
 
 def read_file
@@ -51,5 +51,3 @@ def remove_character(array, char)
     ele.length == 0
   end
 end
-
-# ["0", "1", "2", "3", "6", "7", "8", "9"]
