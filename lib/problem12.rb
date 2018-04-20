@@ -1,17 +1,19 @@
+require 'prime'
+
 def highly_divisible_triangular_number(number)
-  series = 1
-  triangle_number = series
+  n = 1
 
   while true
-    count = 2
+    triangle_number = (n * (n+1)) / 2
+    n += 1
+    count = 1
 
-    for i in 2..(triangle_number/2)
-      count += 1 if (triangle_number % i).zero?
+    triangle_number.prime_division.each do |x|
+      count *= (x.last + 1)
     end
 
-    return triangle_number if count > number
+    count += 2
 
-    series += 1
-    triangle_number += series
+    return triangle_number if count > number
   end
 end
