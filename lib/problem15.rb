@@ -1,11 +1,5 @@
 def lattice_paths(number)
-  sum = 0
-
-  for i in 0..number
-    sum += binomial_expansion( (number-1+i) , i )
-  end
-
-  sum
+  binomial_expansion(2*number , number)
 end
 
 def factorial(n)
