@@ -4,22 +4,16 @@ def quadratic_primes
   product = 0
   primes = 0
 
-  for a in -999..1000
-    for b in -999..1000
+  (-999...1000).each do |a|
+    (-1000..1000).each do |b|
       n = 0
-      count_primes = 0
 
       while true
-        if Prime.prime?(n**2 + a*n + b)
-          count_primes += 1
-          n += 1
-        else
-          break
-        end
+        Prime.prime?(n**2 + a*n + b) ? n += 1 : break
       end
 
-      if count_primes > primes
-        primes = count_primes
+      if n > primes
+        primes = n
         product = a*b
       end
     end
