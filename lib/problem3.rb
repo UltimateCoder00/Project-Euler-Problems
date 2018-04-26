@@ -1,14 +1,5 @@
-require 'prime'
+require_relative 'common'
 
-def largest_prime_factor(number)
-  integer = 1
-
-  number.times do
-    if number % integer == 0
-      factor = number / integer
-      return factor if Prime.prime?(factor)
-    end
-
-    integer += 1
-  end
+def largest_prime_factor(natural_number)
+  prime_divisions(natural_number).last.first
 end
