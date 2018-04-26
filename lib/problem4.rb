@@ -1,24 +1,15 @@
-def largest_palindrome_product(number)
-  integer = ("9"*number).to_i
+require 'common'
+
+def largest_palindrome_product(digit_limit)
+  limit = ("9"*digit_limit).to_i
   palindromic_number = 0
 
-  for i in 1..integer
-    for j in 1..integer
-      k = i*j
-
-      palindromic_number = [palindromic_number, k].max if palindromic?(k)
+  (limit).downto(1) do |a|
+    return palindromic_number if a*limit < palindromic_number
+    (limit).downto(1) do |b|
+      product = a*b
+      break if product < palindromic_number
+      palindromic_number = [palindromic_number, product].max if palindromic?(product)
     end
   end
-
-  palindromic_number
-end
-
-def palindromic?(number)
-  number_array = number.to_s.split("")
-
-  for i in 0...(number_array.length/2)
-    return false if number_array[i] != number_array[-(i+1)]
-  end
-
-  true
 end
