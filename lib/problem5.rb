@@ -1,14 +1,5 @@
-def smallest_multiple(number)
-  multiple = number
+require 'common'
 
-  while true
-    for i in 1..number
-      break unless (multiple % i).zero?
-
-      if i == number
-        return multiple if (multiple % i).zero?
-      end
-    end
-    multiple += 1
-  end
+def smallest_multiple(limit)
+  lcm(1..limit)
 end
