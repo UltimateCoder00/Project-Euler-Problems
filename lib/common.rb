@@ -32,3 +32,19 @@ end
 def digit_product(natural_number_string_array)
   natural_number_string_array.map(&:to_i).inject(:*)
 end
+
+def array_squared_sum(natrual_number_array)
+  natrual_number_array.map {|x| x*x}.sum
+end
+
+def squared_sum(natural_number_a, natural_number_b)
+  natural_number_a*natural_number_a + natural_number_b*natural_number_b
+end
+
+def square_root(integer)
+  Math.sqrt(integer)
+end
+
+def integer_square_root(integer)
+  Integer.sqrt(integer)
+end
