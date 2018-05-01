@@ -1,20 +1,26 @@
+require 'common'
+
 def largest_product_in_a_series(series, digit)
-  series = series.split("")
-  digits_array = series[1..digit]
-  product = product(digits_array)
-
-  i = digit
-
-  while series[i] != nil
-    digits_array.shift
-    digits_array << series[i]
-    product = [product, product(digits_array)].max
-    i += 1
-  end
-
-  product
+  array_of_digits(series.chars, digit).map { |x| digit_product(x) }.max
 end
 
-def product(digits_array)
-  digits_array.map(&:to_i).inject(:*)
+def array_of_digits(series, digit)
+  loop do
+    return digits_array unless series.length >= digit
+    series_end = series.last(digit)
+    series.pop
+    contains_zero?(series_end) ? count_zeros(series_end).times { series.pop } : digits_array << series_end
+  end
+end
+
+def digits_array
+  @digits_array ||= []
+end
+
+def contains_zero?(digit_array)
+  digit_array.include?("0")
+end
+
+def count_zeros(series_end)
+  series_end.reverse.index("0")
 end
