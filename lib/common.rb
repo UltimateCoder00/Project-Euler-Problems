@@ -12,6 +12,10 @@ def first_primes(natural_number)
   Prime.first(natural_number)
 end
 
+def primes_up_to(natural_number)
+  Prime.each(natural_number).to_a
+end
+
 def divisible?(natural_number_a, natural_number_b)
   (natural_number_a % natural_number_b).zero?
 end
