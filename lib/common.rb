@@ -8,6 +8,10 @@ def prime_divisions(natural_number)
   Prime.prime_division(natural_number)
 end
 
+def first_primes(natural_number)
+  Prime.first(natural_number)
+end
+
 def divisible?(natural_number_a, natural_number_b)
   (natural_number_a % natural_number_b).zero?
 end
