@@ -28,3 +28,7 @@ def lcm(range)
   range.reject! {|x| range.any? {|y| x == y ? false : divisible?(y, x)}}
   range.inject(1) {|result, element| result * element}
 end
+
+def digit_product(natural_number_string_array)
+  natural_number_string_array.map(&:to_i).inject(:*)
+end
