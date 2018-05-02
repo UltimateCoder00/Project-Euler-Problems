@@ -24,11 +24,11 @@ describe 'Problem8' do
 
   describe 'Largest Product In A Series' do
     it 'Works Out Four Adjacent Digits Of Largest Product In A Series' do
-      expect(largest_product_in_a_series(thousand_digit_number, 4)).to eq 5832
+      expect(largest_product_in_a_series(thousand_digit_number, 4)).to eq 5_832
     end
 
     it 'Works Out Thirteen Adjacent Digits Of The Summation Of Primes' do
-      expect(largest_product_in_a_series(thousand_digit_number, 13)).to eq 23514624000
+      expect(largest_product_in_a_series(thousand_digit_number, 13)).to eq 23_514_624_000
     end
   end
 end
