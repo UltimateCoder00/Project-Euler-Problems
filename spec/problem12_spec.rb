@@ -8,7 +8,7 @@ describe 'Problem12' do
     end
 
     it 'Works Out The Highly Divisible Triangular Number Of More Than 500 Divisors' do
-      expect(highly_divisible_triangular_number(500)).to eq 76576500
+      expect(highly_divisible_triangular_number(500)).to eq 76_576_500
     end
   end
 end
