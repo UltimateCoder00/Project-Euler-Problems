@@ -8,7 +8,7 @@ describe 'Problem7' do
     end
 
     it 'Works Out The 10001st Prime' do
-      expect(find_prime(10001)).to eq 104743
+      expect(find_prime(10_001)).to eq 104_743
     end
   end
 end
