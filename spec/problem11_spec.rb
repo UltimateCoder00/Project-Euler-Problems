@@ -25,7 +25,7 @@ describe 'Problem11' do
 
   describe 'Largest Product In A Grid' do
     it 'Works Out The Largest Product In A Grid' do
-      expect(largest_product_in_a_grid(array)).to eq 70600674
+      expect(largest_product_in_a_grid(array)).to eq 70_600_674
     end
   end
 end
