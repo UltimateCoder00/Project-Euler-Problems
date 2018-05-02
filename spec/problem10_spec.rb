@@ -8,7 +8,7 @@ describe 'Problem10' do
     end
 
     it 'Works Out The Summation Of Primes' do
-      expect(summation_of_primes(2000000)).to eq 142913828922
+      expect(summation_of_primes(2_000_000)).to eq 142_913_828_922
     end
   end
 end
