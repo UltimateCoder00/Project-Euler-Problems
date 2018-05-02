@@ -106,7 +106,7 @@ describe 'Problem13' do
 
   describe 'Large Sum' do
     it 'Works Out The First Ten Digits Of The Large Sum' do
-      expect(large_sum(array)).to eq 5537376230
+      expect(large_sum(array)).to eq 5_537_376_230
     end
   end
 end
