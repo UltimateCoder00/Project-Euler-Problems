@@ -8,7 +8,7 @@ describe 'Problem15' do
     end
 
     it 'Works Out The Lattice Paths Of 20x20' do
-      expect(lattice_paths(20)).to eq 137846528820
+      expect(lattice_paths(20)).to eq 137_846_528_820
     end
   end
 end
