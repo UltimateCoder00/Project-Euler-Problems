@@ -8,7 +8,7 @@ describe 'Problem17' do
     end
 
     it 'Works Out The Number Letter Counts Of 1 To 1000' do
-      expect(number_letter_counts(1000)).to eq 21124
+      expect(number_letter_counts(1_000)).to eq 21_124
     end
   end
 end
