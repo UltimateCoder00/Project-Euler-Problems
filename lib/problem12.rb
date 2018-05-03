@@ -1,19 +1,24 @@
-require 'prime'
+require 'common'
 
-def highly_divisible_triangular_number(number)
+def highly_divisible_triangular_number(limit)
   n = 1
 
-  while true
-    triangle_number = (n * (n+1)) / 2
+  loop do
+    return triangle_number(n) if enough_factors?(n, limit)
     n += 1
-    count = 1
-
-    triangle_number.prime_division.each do |x|
-      count *= (x.last + 1)
-    end
-
-    count += 2
-
-    return triangle_number if count > number
   end
+end
+
+def triangle_number(natural_number)
+  (natural_number * (natural_number+1)) / 2
+end
+
+def enough_factors?(natural_number, limit)
+  number_of_factors_of(natural_number) > limit
+end
+
+def number_of_factors_of(natural_number)
+  prime_divisions(triangle_number(natural_number)).map do |x|
+    x.last + 1
+  end.inject(1) {|product, value| product *= value} + 2
 end
