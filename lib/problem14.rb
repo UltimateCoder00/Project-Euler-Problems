@@ -1,30 +1,25 @@
-def longest_collatz_sequence
-  count = 0
-  starting_series = 2
-
-  for i in 2...1_000_000
-    array[i] = sequence(1, i)
-    starting_series = i if array[i] > count
-    count = [count, array[i]].max
+def longest_collatz_sequence(limit)
+  (2...limit).each do |natural_number|
+    collatz_numbers << sequence(1, natural_number)
   end
 
-  starting_series
+  collatz_numbers.index(collatz_numbers.max)
 end
 
-def array
-  @array ||= [0, 1]
+def collatz_numbers
+  @collatz_numbers ||= [0, 1]
 end
 
-def sequence(count , n)
-  return count if n == 1
-  return count + array[n] unless array[n] == nil
-  n.even? ? sequence(count + 1, even(n)) : sequence(count + 1, odd(n))
+def sequence(count , natural_number)
+  return count if natural_number == 1
+  return count + collatz_numbers[natural_number] unless collatz_numbers[natural_number] == nil
+  natural_number.even? ? sequence(count + 1, even(natural_number)) : sequence(count + 1, odd(natural_number))
 end
 
-def odd(n)
-  3*n + 1
+def odd(natural_number)
+  3*natural_number + 1
 end
 
-def even(n)
-  n / 2
+def even(natural_number)
+  natural_number / 2
 end
