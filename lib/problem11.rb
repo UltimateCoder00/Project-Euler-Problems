@@ -1,44 +1,32 @@
 require 'common'
 
 def largest_product_in_a_grid(array)
-  grid = [array, array.transpose, diagonal_array(array), diagonal_array(array.reverse).transpose]
-  four_digit_max_product = 0
-
-  grid.each do |x|
-    four_digit_max_product = max_product(four_digit_max_product, x)
-  end
-
-  four_digit_max_product
+  grid_lines = [array, array.transpose, diagonalize(array), diagonalize(array.reverse).transpose]
+  max_of(max_product_in_each_plane_of(grid_lines))
 end
 
-def grid
-  @grid ||= []
+def max_of(array)
+  array.max
 end
 
-def max_product(four_digit_max_product, array)
-  array.each do |x|
-    four_digit_max_product = [four_digit_max_product, four_digit_max_product(x.dup)].max
-  end
-  four_digit_max_product
+def diagonalize(array)
+  array.each_with_index.map { |array, index| array.rotate(index) }
 end
 
-def four_digit_max_product(natural_number_array)
-  horizontal_product = 0
-  loop do
-    break if natural_number_array.length < 4
-    horizontal_product = [horizontal_product, digit_product(natural_number_array.last(4))].max
-    natural_number_array.pop
-  end
-
-  horizontal_product
+def max_product_in_each_plane_of(grid)
+  grid.map { |x| max_of(max_product_in_row(x)) }
 end
 
-def diagonal_array(array)
-  new_array = []
+def max_product_in_row(array)
+  array.map { |x| max_of(product_of_fours(x.dup)) }
+end
 
-  array.each_with_index do |array, index|
-    new_array << array.rotate(index)
-  end
+def product_of_fours(natural_numbers_array)
+  chunk_into_fours(natural_numbers_array).map { |x| digit_product(x) }
+end
 
-  new_array
+def chunk_into_fours(natural_number_array)
+  natural_number_array.each_with_index.map do |_val, index|
+    natural_number_array.rotate(index).last(4)
+  end.rotate(1).drop(3)
 end
