@@ -1,12 +1,5 @@
-def lattice_paths(number)
-  binomial_expansion(2*number , number)
-end
+require 'common'
 
-def factorial(n)
-  return 1 if n < 2
-  n * factorial(n-1)
-end
-
-def binomial_expansion(n, k)
-  factorial(n) / ( factorial(n-k) * factorial(k) )
+def lattice_paths(limit)
+  binomial_expansion(2*limit , limit)
 end
