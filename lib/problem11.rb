@@ -1,7 +1,11 @@
 require 'common'
 
 def largest_product_in_a_grid(array)
-  grid_lines = [array, array.transpose, diagonalize(array), diagonalize(array.reverse).transpose]
+  grid_lines = [array,
+                array.transpose,
+                diagonalize(array),
+                diagonalize(array.reverse).transpose]
+
   max_of(max_product_in_each_plane_of(grid_lines))
 end
 
@@ -10,7 +14,7 @@ def max_of(array)
 end
 
 def diagonalize(array)
-  array.each_with_index.map { |array, index| array.rotate(index) }
+  array.each_with_index.map { |value, index| value.rotate(index) }
 end
 
 def max_product_in_each_plane_of(grid)
