@@ -1,36 +1,40 @@
 require 'common'
 
 def digit_cancelling_fractions
-  counting = []
-
   (10...99).each do |numerator|
     ((numerator+1)..99).each do |denominator|
-      next if (denominator % 10).zero?
-      next if numerator == palindromic(denominator)
+      next if skip?(numerator, denominator)
 
-      a = numerator.to_s.chars
-      b = denominator.to_s.chars
-
+      a = numerator.to_s.chars.map(&:to_i)
+      b = denominator.to_s.chars.map(&:to_i)
       next unless b.include?(a.first) || b.include?(a.last)
-      b.include?(a.first) ? k = a.first : k = a.last
-      a.delete(k)
-      b.delete(k)
-      a = a.pop.to_i
-      b = b.pop.to_i
+      a, b = remove_common(a, b)
 
-      if (numerator / denominator.to_f) == (a / b.to_f)
-        counting << [a, b]
-      end
+      take_product(a, b) if (numerator / denominator.to_f) == (a / b.to_f)
     end
   end
 
-  a = 1
-  b = 1
+  Rational(fractions_product[0], fractions_product[1]).denominator
+end
 
-  counting.each do |x|
-    a *= x.first
-    b *= x.last
-  end
+def fractions_product
+  @fractions_product ||= [1, 1]
+end
 
-  Rational(a, b).denominator
+def skip?(numerator, denominator)
+  return true if (denominator % 10).zero?
+  return true if numerator == palindromic(denominator)
+end
+
+def remove_common(a, b)
+  common = (a & b).first
+  a.delete_at(a.index(common))
+  b.delete_at(b.index(common))
+
+  [a.first, b.first]
+end
+
+def take_product(numerator, denominator)
+  fractions_product[0] *= numerator
+  fractions_product[1] *= denominator
 end
