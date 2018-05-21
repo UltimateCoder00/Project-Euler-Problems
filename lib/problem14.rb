@@ -10,14 +10,14 @@ def collatz_numbers
   @collatz_numbers ||= [0, 1]
 end
 
-def sequence(count , natural_number)
+def sequence(count, natural_number)
   return count if natural_number == 1
   return count + collatz_numbers[natural_number] unless collatz_numbers[natural_number] == nil
   natural_number.even? ? sequence(count + 1, even(natural_number)) : sequence(count + 1, odd(natural_number))
 end
 
 def odd(natural_number)
-  3*natural_number + 1
+  3 * natural_number + 1
 end
 
 def even(natural_number)
