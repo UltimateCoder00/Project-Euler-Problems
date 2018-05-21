@@ -1,7 +1,6 @@
 require 'problem3'
 
 describe 'Problem3' do
-
   describe 'Largest Prime Factor' do
     it 'Works Out The Largest Prime Factor Of 13195' do
       expect(largest_prime_factor(13_195)).to eq 29
