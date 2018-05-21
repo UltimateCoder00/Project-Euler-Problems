@@ -25,6 +25,10 @@ def palindromic?(natural_number)
   natural_number == natural_number.reverse
 end
 
+def palindromic(natural_number)
+  natural_number.to_s.reverse.to_i
+end
+
 def lcm(range)
   range.min == 1 ? range = range.to_a[1..-1] : range = range.to_a
   range.map! {|x| prime_divisions(x).pop}.uniq!
@@ -35,6 +39,10 @@ end
 
 def digit_product(natural_number_string_array)
   natural_number_string_array.map(&:to_i).inject(:*)
+end
+
+def digit_sum(natural_number_string_array)
+  natural_number_string_array.map(&:to_i).inject(:+)
 end
 
 def array_squared_sum(natrual_number_array)
@@ -51,4 +59,43 @@ end
 
 def integer_square_root(integer)
   Integer.sqrt(integer)
+end
+
+def factorial(natural_number)
+  return 1 if natural_number < 2
+  natural_number * factorial(natural_number-1)
+end
+
+def binomial_expansion(n, k)
+  factorial(n) / ( factorial(n-k) * factorial(k) )
+end
+
+def read_file(file_name)
+  File.open("./files/#{file_name}", "r") do |f|
+    f.each_line { |line| return line }
+  end
+end
+
+def render(string)
+  string.chars.select { |c| valid?(c) }.join.split(",").sort
+end
+
+def valid?(char)
+  ("A".."Z").to_a.include?(char) || char == ","
+end
+
+def number_from(letter)
+  ("A".."Z").to_a.index(letter.upcase) + 1
+end
+
+def triangle(n)
+  ( n * ( n + 1 ) ) / 2
+end
+
+def pentagonal(n)
+  ( n * ( ( 3 * n ) - 1 ) ) / 2
+end
+
+def hexagonal(n)
+  n * ( ( 2 * n ) - 1 )
 end
