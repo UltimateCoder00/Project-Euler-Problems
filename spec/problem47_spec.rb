@@ -1,7 +1,6 @@
 require 'problem47'
 
 describe 'Problem47' do
-
   describe 'Distinct Primes Factors' do
     it 'Works Out The Distinct Primes Factors Of Two Consecutive Numbers' do
       expect(distinct_primes_factors(2)).to eq 14
@@ -12,7 +11,7 @@ describe 'Problem47' do
     end
 
     it 'Works Out The Distinct Primes Factors Of Four Consecutive Numbers' do
-      expect(distinct_primes_factors(4)).to eq 134043
+      expect(distinct_primes_factors(4)).to eq 134_043
     end
   end
 end
