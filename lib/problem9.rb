@@ -7,7 +7,7 @@ def special_pythagorean_triplet(limit)
       c_2 = squared_sum(a, b)
       next unless square_root_natural_number?(c_2)
       c = integer_square_root(c_2)
-      return a*b*c if pythagorean_triplet?(a, b, c, limit)
+      return a * b * c if pythagorean_triplet?(a, b, c, limit)
     end
   end
 end

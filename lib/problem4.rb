@@ -1,7 +1,7 @@
 require 'common'
 
 def largest_palindrome_product(digit_limit)
-  limit = ("9" * digit_limit).to_i
+  limit = ('9' * digit_limit).to_i
   largest_palindromic_number = 0
 
   limit.downto(1) do |a|

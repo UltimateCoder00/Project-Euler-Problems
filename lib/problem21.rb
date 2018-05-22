@@ -16,5 +16,5 @@ def amicable?(i)
 end
 
 def factor_sum(x)
-  (1..(x/2)).inject(0) { |count, i| (x % i).zero? ? count + i : count }
+  (1..(x / 2)).inject(0) { |count, i| (x % i).zero? ? count + i : count }
 end

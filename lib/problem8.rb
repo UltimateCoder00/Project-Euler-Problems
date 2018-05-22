@@ -18,9 +18,9 @@ def digits_array
 end
 
 def contains_zero?(digit_array)
-  digit_array.include?("0")
+  digit_array.include?('0')
 end
 
 def count_zeros(series_end)
-  series_end.reverse.index("0")
+  series_end.reverse.index('0')
 end
