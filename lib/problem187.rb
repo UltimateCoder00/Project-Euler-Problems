@@ -2,14 +2,17 @@ require 'common'
 
 def semiprimes(limit)
   primes = primes_up_to((limit / 2) + 1)
-  semiprimes = []
+  primes.each { |prime_one| compute_semiprimes(primes, prime_one, limit) }
+  semiprimes_array.uniq.count
+end
 
-  primes.each do |prime_one|
-    primes.each do |prime_two|
-      break if prime_one * prime_two > limit
-      semiprimes << prime_one * prime_two
-    end
+def semiprimes_array
+  @semiprimes_array ||= []
+end
+
+def compute_semiprimes(primes, prime_one, limit)
+  primes.each do |prime_two|
+    break if prime_one * prime_two > limit
+    semiprimes_array << prime_one * prime_two
   end
-
-  semiprimes.uniq.count
 end
