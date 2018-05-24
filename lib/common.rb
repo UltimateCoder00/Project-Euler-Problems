@@ -99,3 +99,19 @@ end
 def hexagonal(n)
   n * ((2 * n) - 1)
 end
+
+def divisors(natural_number)
+  divisors = []
+  prime_divisions(natural_number).each do |array|
+    numbers = []
+    (0..array.last).each { |prime| numbers << array.first**prime }
+    divisors << numbers
+  end
+
+  products = divisors.first
+  (1...divisors.length).each do |i|
+    products = products.product(divisors[i]).map!(&:flatten)
+  end
+
+  products.map! { |numbers| numbers.inject(:*) }.sort.uniq
+end
