@@ -95,4 +95,18 @@ describe 'Common' do
       expect(lcm(1..10)).to eq 2520
     end
   end
+
+  describe '#divisors' do
+    it 'Works Out The Divisors 10' do
+      expect(divisors(10)).to eq [1, 2, 5, 10]
+    end
+
+    it 'Works Out The Divisors 30' do
+      expect(divisors(30)).to eq [1, 2, 3, 5, 6, 10, 15, 30]
+    end
+
+    it 'Works Out The Divisors 100' do
+      expect(divisors(100)).to eq [1, 2, 4, 5, 10, 20, 25, 50, 100]
+    end
+  end
 end
