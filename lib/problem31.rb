@@ -1,29 +1,32 @@
 def coin_sums(coins_array, total)
-  count = coins_array.count
+  new_coins_array = get_all_denominator_combinations(coins_array, total)
 
-  a = coins_array.dup
-
-  coins_array.map! do |coin|
-    (0...(total/coin)).to_a.map { |x| x*coin }
-  end
-  coins_array.pop
-
-  new_array = [coins_array.first]
-
-  (1...(coins_array.length)).each do |i|
-    new_array += [coins_array[i]]
-    k = new_array.first.product(new_array.last).map do |x|
+  k = [new_coins_array[0]]
+  (1...(new_coins_array.length)).each do |i|
+    k = k.first.product(new_coins_array[i]).map do |x|
       x.inject(:+)
     end.reject do |y|
       y > total
     end.sort
 
-    unless a[i+1] == nil || a[i+1] == 20
-      k.select! { |x| (x % a[i+1]).zero? }
+    unless coins_array[i+1] == nil
+      unless coins_array[i+1] == 20
+        k.select! { |x| (x % coins_array[i+1]).zero? }
+      end
     end
 
-    new_array = [k]
+    k = [k]
   end
 
-  count += new_array.flatten.count(total)
+  coins_array.count + k.flatten.count(total)
+end
+
+def get_all_denominator_combinations(coins_array, total)
+  coins_array.map do |coin|
+    get_all_denominator_multiples(coin, total)
+  end.first(coins_array.length-1)
+end
+
+def get_all_denominator_multiples(coin, total)
+  (0...(total/coin)).to_a.map { |value| value*coin }
 end
