@@ -1,25 +1,19 @@
 def permuted_multiples
-  i = 1
-  while true
-    a = i.to_s.split("").sort
-    b = (2*i).to_s.split("").sort
-    c = (3*i).to_s.split("").sort
-    d = (4*i).to_s.split("").sort
-    e = (5*i).to_s.split("").sort
-    f = (6*i).to_s.split("").sort
-
-    if a == b
-      if b == c
-        if c == d
-          if d == e
-            if e == f
-              return i
-            end
-          end
-        end
-      end
-    end
-
-    i += 1
+  natural_number = 1
+  loop do
+    return natural_number if all_multiples_same?(natural_number)
+    natural_number += 1
   end
+end
+
+def all_multiples_same?(natural_number)
+  (2..6).each do |i|
+    return false unless same_digits?(natural_number, i * natural_number)
+  end
+
+  true
+end
+
+def same_digits?(int1, int2)
+  int1.to_s.split('').sort == int2.to_s.split('').sort
 end
